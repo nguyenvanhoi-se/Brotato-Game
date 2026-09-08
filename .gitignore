@@ -1,0 +1,28 @@
+# Thư mục tạm và thư mục rác của Unity (Rất nặng, không được đẩy lên Git)
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]serSettings/
+/[Mm]emoryCaptures/
+
+# File do Visual Studio / Rider / VS Code tự sinh ra
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+.vscode/
+
+# File rác hệ điều hành
+.DS_Store
+Thumbs.db
