@@ -1,0 +1,685 @@
+PRODUCT REQUIREMENTS DOCUMENT (PRD)
+GAME 2D TOP-DOWN SURVIVAL SHOOTER
+Phiên bản: 1.0
+Nền tảng: PC
+Game Engine: Unity 2D
+Ngôn ngữ: C#
+Thể loại: 2D Top-down Survival Shooter / Auto Shooter
+Chế độ: Single Player
+________________________________________
+1. PRODUCT OVERVIEW
+1.1 Tên dự án
+Game 2D Survival Shooter
+Tên chính thức của game có thể được quyết định sau.
+1.2 Mô tả sản phẩm
+Game 2D Survival Shooter là một game hành động sinh tồn góc nhìn từ trên xuống.
+Người chơi điều khiển nhân vật di chuyển trên bản đồ bằng bàn phím, né tránh các Enemy liên tục xuất hiện và cố gắng sinh tồn qua các Wave.
+Player sở hữu một Weapon có khả năng tự động bắn. Weapon xoay theo hướng chuột và liên tục tấn công Enemy.
+Khi Enemy bị tiêu diệt, Kill Count của Player tăng lên và Enemy có cơ hội rơi Item.
+Người chơi cần sống sót qua tổng cộng 9 Wave. Độ khó sẽ tăng dần theo từng Wave.
+Sau khi hoàn thành Wave cuối cùng, Player chiến thắng.
+________________________________________
+2. PRODUCT GOALS
+2.1 Mục tiêu chính
+Xây dựng một game Unity 2D hoàn chỉnh có thể chơi từ đầu đến cuối.
+Game cần có:
+•	Gameplay loop rõ ràng.
+•	Player có thể di chuyển.
+•	Enemy có thể Spawn và đuổi Player.
+•	Weapon tự động bắn.
+•	Bullet gây Damage.
+•	Enemy có HP và có thể chết.
+•	Player có HP và có thể Game Over.
+•	Game có Wave System.
+•	Độ khó tăng dần.
+•	Player có thể nâng cấp Weapon.
+•	Enemy có thể rơi Item.
+•	Hoàn thành Wave cuối để Victory.
+2.2 Mục tiêu kỹ thuật
+Dự án cần giúp thực hành:
+•	Unity 2D.
+•	C#.
+•	Rigidbody2D.
+•	Collider2D.
+•	Prefab.
+•	ScriptableObject.
+•	Scene Management.
+•	UI System.
+•	Game State.
+•	Wave System.
+•	Enemy Spawning.
+•	Collision System.
+2.3 Nguyên tắc phát triển
+Ưu tiên:
+1.	Gameplay chạy được.
+2.	Gameplay ổn định.
+3.	Gameplay cân bằng.
+4.	UI rõ ràng.
+5.	Âm thanh và hiệu ứng.
+6.	Tối ưu.
+7.	Tính năng nâng cao.
+Không thêm tính năng mới khi Core Gameplay chưa hoàn chỉnh.
+________________________________________
+3. TARGET PLAYER
+Game hướng đến:
+•	Người chơi thích game hành động.
+•	Người chơi thích Survival Game.
+•	Người chơi thích Top-down Shooter.
+•	Người chơi thích gameplay nhanh.
+•	Người chơi thích phong cách Brotato-like.
+Đặc điểm trải nghiệm
+Game cần:
+•	Dễ bắt đầu.
+•	Điều khiển đơn giản.
+•	Gameplay rõ ràng.
+•	Không yêu cầu nhiều nút điều khiển.
+•	Người chơi tập trung vào di chuyển và né Enemy.
+________________________________________
+4. CORE GAMEPLAY
+Gameplay chính của game:
+Player di chuyển
+↓
+Enemy Spawn
+↓
+Enemy đuổi Player
+↓
+Weapon tự động bắn
+↓
+Bullet gây Damage
+↓
+Enemy chết
+↓
+Kill Count tăng
+↓
+Enemy có cơ hội rơi Item
+↓
+Player tiếp tục sinh tồn
+↓
+Wave kết thúc
+↓
+Độ khó tăng
+↓
+Wave tiếp theo bắt đầu
+↓
+Hoàn thành Wave 9
+↓
+Victory
+________________________________________
+5. CORE GAME LOOP
+5.1 Bắt đầu Game
+Người chơi:
+1.	Mở Game.
+2.	Vào Main Menu.
+3.	Chọn Play.
+4.	Chuyển sang Gameplay Scene.
+5.	Wave 1 bắt đầu.
+5.2 Trong Gameplay
+Player:
+•	Di chuyển.
+•	Né Enemy.
+•	Weapon tự động bắn.
+•	Tiêu diệt Enemy.
+•	Nhận Item nếu Enemy rơi Item.
+•	Nâng cấp Weapon theo Kill Count.
+•	Sinh tồn đến hết thời gian Wave.
+5.3 Kết thúc Wave
+Khi Timer về 0:
+•	Wave hiện tại hoàn thành.
+•	Hiển thị Wave Complete.
+•	Chuyển sang Wave tiếp theo.
+•	Độ khó tăng.
+5.4 Kết thúc Game
+Game có hai trạng thái kết thúc:
+Game Over
+Khi:
+Player HP <= 0
+Victory
+Khi:
+Hoàn thành Wave 9
+________________________________________
+6. MVP SCOPE
+MVP là phiên bản tối thiểu cần hoàn thành trước.
+6.1 Player
+Bắt buộc:
+•	Di chuyển bằng WASD.
+•	Có HP.
+•	Nhận Damage khi chạm Enemy.
+•	Có Damage Cooldown.
+•	HP = 0 → Game Over.
+Không sử dụng hệ thống nhiều mạng.
+________________________________________
+6.2 Weapon
+Bắt buộc:
+•	Player có 1 Weapon.
+•	Weapon xoay theo hướng chuột.
+•	Weapon tự động bắn.
+•	Bullet được tạo từ Weapon.
+•	Bullet gây Damage.
+•	Weapon có 4 Level.
+________________________________________
+6.3 Enemy
+Có tối đa 3 loại Enemy:
+Normal Enemy
+•	HP trung bình.
+•	Speed trung bình.
+•	Damage trung bình.
+Fast Enemy
+•	HP thấp.
+•	Speed cao.
+•	Damage thấp.
+Tank Enemy
+•	HP cao.
+•	Speed thấp.
+•	Damage cao.
+Tất cả Enemy cần:
+•	Spawn.
+•	Di chuyển về Player.
+•	Có HP.
+•	Gây Damage khi chạm Player.
+•	Chết khi HP <= 0.
+________________________________________
+6.4 Wave
+Game có:
+9 Wave
+Chia thành:
+•	Wave 1–3: Forest.
+•	Wave 4–6: Desert.
+•	Wave 7–9: Dungeon.
+Mỗi Wave:
+•	Khoảng 45–60 giây.
+•	Có Enemy Spawn.
+•	Độ khó tăng dần.
+Hoàn thành Wave 9:
+Victory.
+________________________________________
+6.5 Item
+Có tối đa 3 loại Item:
+Health Pickup
+Tăng HP cho Player.
+Speed Boost
+Tăng Movement Speed tạm thời.
+Damage Boost
+Tăng Damage tạm thời.
+Enemy có xác suất rơi Item.
+Không phải Enemy nào chết cũng rơi Item.
+________________________________________
+7. FUNCTIONAL REQUIREMENTS
+F01 - Player Movement
+Mô tả
+Player có thể di chuyển trên Map.
+Điều khiển
+W:
+Di chuyển lên.
+A:
+Di chuyển trái.
+S:
+Di chuyển xuống.
+D:
+Di chuyển phải.
+Yêu cầu
+•	Player có thể di chuyển 4 hướng.
+•	Player có thể di chuyển chéo.
+•	Player không đi xuyên Collider.
+•	Player không thể di chuyển khi Game Over.
+Priority
+MUST HAVE
+________________________________________
+F02 - Player Health
+Mô tả
+Player có hệ thống HP.
+Yêu cầu
+•	Player có Max HP.
+•	Player có Current HP.
+•	Enemy có thể gây Damage.
+•	Player có Damage Cooldown.
+•	HP <= 0 → Game Over.
+Priority
+MUST HAVE
+________________________________________
+F03 - Enemy Follow
+Mô tả
+Enemy tự động di chuyển về phía Player.
+Yêu cầu
+•	Enemy tìm Player.
+•	Enemy di chuyển về Player.
+•	Enemy không cần AI phức tạp.
+•	Enemy không sử dụng ranged attack trong phiên bản đầu.
+Priority
+MUST HAVE
+________________________________________
+F04 - Enemy Spawn
+Mô tả
+Enemy được Spawn liên tục trong Wave.
+Yêu cầu
+Enemy Spawn:
+•	Không xuất hiện sát Player.
+•	Ưu tiên Spawn ngoài Camera.
+•	Không Spawn không giới hạn.
+Spawner cần quản lý:
+•	Spawn Interval.
+•	Max Enemies Alive.
+•	Enemy Type.
+•	Wave Difficulty.
+Priority
+MUST HAVE
+________________________________________
+F05 - Weapon Aim
+Mô tả
+Weapon xoay theo hướng chuột.
+Yêu cầu
+•	Lấy vị trí chuột.
+•	Chuyển Mouse Position sang World Position.
+•	Tính Direction.
+•	Weapon xoay đúng hướng.
+Priority
+MUST HAVE
+________________________________________
+F06 - Auto Fire
+Mô tả
+Weapon tự động bắn.
+Yêu cầu
+•	Không cần click chuột.
+•	Bắn theo Fire Rate.
+•	Spawn Bullet.
+•	Weapon tiếp tục bắn khi Game đang Playing.
+Priority
+MUST HAVE
+________________________________________
+F07 - Bullet System
+Mô tả
+Bullet được tạo từ Weapon và di chuyển theo hướng bắn.
+Yêu cầu
+Bullet có:
+•	Damage.
+•	Speed.
+•	Lifetime.
+Bullet:
+•	Di chuyển.
+•	Va chạm Enemy.
+•	Gây Damage.
+•	Bị Destroy khi Hit.
+•	Bị Destroy khi hết Lifetime.
+Priority
+MUST HAVE
+________________________________________
+F08 - Enemy Health
+Mô tả
+Enemy có HP và nhận Damage từ Bullet.
+Yêu cầu
+•	Enemy có Max HP.
+•	Enemy có Current HP.
+•	Nhận Damage.
+•	HP <= 0 → Death.
+•	Enemy bị Destroy khi chết.
+Priority
+MUST HAVE
+________________________________________
+F09 - Kill Count
+Mô tả
+Game theo dõi tổng số Enemy Player tiêu diệt.
+Yêu cầu
+•	Kill Count tăng khi Enemy chết.
+•	UI cập nhật Kill Count.
+•	Kill Count được sử dụng cho Weapon Upgrade.
+Priority
+MUST HAVE
+________________________________________
+F10 - Weapon Upgrade
+Mô tả
+Weapon được nâng cấp dựa trên Kill Count.
+Weapon Levels
+Level 1
+Level 2
+Level 3
+Level 4
+Upgrade có thể thay đổi
+•	Damage.
+•	Fire Rate.
+•	Bullet Count.
+Priority
+SHOULD HAVE
+________________________________________
+F11 - Wave System
+Mô tả
+Game được chia thành 9 Wave.
+Yêu cầu
+•	Có Wave hiện tại.
+•	Có Timer.
+•	Có thời gian Wave.
+•	Wave kết thúc khi Timer = 0.
+•	Chuyển sang Wave tiếp theo.
+•	Độ khó tăng.
+•	Wave 9 hoàn thành → Victory.
+Priority
+MUST HAVE
+________________________________________
+F12 - Difficulty Scaling
+Độ khó tăng bằng:
+•	Spawn Interval giảm.
+•	Max Enemies Alive tăng.
+•	Enemy HP tăng.
+•	Tỉ lệ Fast Enemy tăng.
+•	Tỉ lệ Tank Enemy tăng.
+Không tăng Enemy Speed quá mạnh.
+Priority
+MUST HAVE
+________________________________________
+F13 - Item Drop
+Mô tả
+Enemy có cơ hội rơi Item khi chết.
+Yêu cầu
+•	Có Drop Chance.
+•	Random loại Item.
+•	Spawn Item.
+•	Player có thể nhặt Item.
+Priority
+SHOULD HAVE
+________________________________________
+F14 - Pause
+Player có thể:
+ESC
+↓
+Pause Game
+Pause Menu
+•	Resume.
+•	Restart.
+•	Main Menu.
+Priority
+SHOULD HAVE
+________________________________________
+F15 - Game Over
+Khi:
+Player HP <= 0
+Hiển thị:
+GAME OVER
+Thông tin:
+•	Wave Reached.
+•	Kill Count.
+Buttons:
+•	Retry.
+•	Main Menu.
+Priority
+MUST HAVE
+________________________________________
+F16 - Victory
+Khi:
+Wave 9 hoàn thành
+Hiển thị:
+VICTORY
+Thông tin:
+•	Total Kills.
+Buttons:
+•	Play Again.
+•	Main Menu.
+Priority
+MUST HAVE
+________________________________________
+8. USER STORIES
+US01 - Movement
+Là một người chơi,
+tôi muốn di chuyển Player bằng WASD,
+để có thể né Enemy và sinh tồn.
+Acceptance Criteria
+•	Player di chuyển bằng WASD.
+•	Player có thể di chuyển chéo.
+•	Player không đi xuyên Map.
+•	Movement hoạt động ổn định.
+________________________________________
+US02 - Auto Shooting
+Là một người chơi,
+tôi muốn Weapon tự động bắn,
+để tôi tập trung vào việc di chuyển.
+Acceptance Criteria
+•	Weapon tự động bắn.
+•	Không cần click.
+•	Fire Rate hoạt động đúng.
+•	Bullet được Spawn đúng vị trí.
+________________________________________
+US03 - Enemy Combat
+Là một người chơi,
+tôi muốn Enemy đuổi theo Player,
+để tạo ra thử thách sinh tồn.
+Acceptance Criteria
+•	Enemy tìm được Player.
+•	Enemy di chuyển về Player.
+•	Enemy gây Damage khi va chạm.
+________________________________________
+US04 - Weapon Upgrade
+Là một người chơi,
+tôi muốn Weapon mạnh hơn sau khi tiêu diệt nhiều Enemy,
+để tôi có thể đối phó với Wave khó hơn.
+Acceptance Criteria
+•	Kill Count được theo dõi.
+•	Đạt điều kiện → Weapon Upgrade.
+•	Damage thay đổi đúng.
+•	Fire Rate thay đổi đúng.
+•	UI hiển thị Weapon Level.
+________________________________________
+US05 - Wave Progression
+Là một người chơi,
+tôi muốn hoàn thành Wave và chuyển sang Wave tiếp theo,
+để cảm nhận được tiến trình của Game.
+Acceptance Criteria
+•	Timer hoạt động.
+•	Wave Complete xuất hiện.
+•	Wave tiếp theo bắt đầu.
+•	Difficulty tăng.
+•	Wave 9 → Victory.
+________________________________________
+9. UI REQUIREMENTS
+Gameplay UI cần hiển thị:
+•	HP.
+•	Timer.
+•	Current Wave.
+•	Kill Count.
+•	Weapon Level.
+Required Screens
+Main Menu
+•	Play.
+•	How To Play.
+•	Exit.
+Gameplay HUD
+•	HP.
+•	Timer.
+•	Wave.
+•	Kill Count.
+•	Weapon Level.
+Pause
+•	Resume.
+•	Restart.
+•	Main Menu.
+Wave Complete
+•	Wave X Completed.
+Game Over
+•	Wave Reached.
+•	Kills.
+•	Retry.
+•	Main Menu.
+Victory
+•	Total Kills.
+•	Play Again.
+•	Main Menu.
+________________________________________
+10. NON-FUNCTIONAL REQUIREMENTS
+Performance
+Game cần:
+•	Chạy ổn định.
+•	Không bị Spawn Enemy không giới hạn.
+•	Không bị lỗi khi Enemy chết.
+•	Không bị lỗi khi chuyển Wave.
+•	Không bị lỗi khi Player Game Over.
+Usability
+Game cần:
+•	Điều khiển đơn giản.
+•	UI dễ hiểu.
+•	Thông tin quan trọng dễ nhìn.
+Code Quality
+Code cần:
+•	Tách Player System.
+•	Tách Enemy System.
+•	Tách Weapon System.
+•	Tách Wave System.
+•	Tách UI System.
+•	Tránh Hardcode thông số thường xuyên thay đổi.
+________________________________________
+11. OUT OF SCOPE
+Các tính năng sau không nằm trong phiên bản đầu:
+•	Boss.
+•	Enemy Ranged Attack.
+•	Shop.
+•	Inventory.
+•	Multiple Weapons.
+•	Weapon Switching.
+•	Character Selection.
+•	Skill Tree.
+•	Dash.
+•	Reload.
+•	Quest.
+•	Achievement.
+•	Save / Load.
+•	Procedural Map.
+•	Multiplayer.
+•	Online Leaderboard.
+•	AI phức tạp.
+Các tính năng này chỉ được xem xét sau khi MVP hoàn chỉnh.
+________________________________________
+12. MVP SUCCESS CRITERIA
+MVP được xem là hoàn thành khi:
+•	Player di chuyển được.
+•	Player có HP.
+•	Enemy Spawn được.
+•	Enemy đuổi Player.
+•	Weapon xoay theo chuột.
+•	Weapon tự động bắn.
+•	Bullet hoạt động.
+•	Bullet gây Damage.
+•	Enemy có thể chết.
+•	Kill Count hoạt động.
+•	Timer hoạt động.
+•	Wave hoạt động.
+•	Player có thể Game Over.
+•	Game có thể Victory.
+Người chơi phải có thể:
+Main Menu
+↓
+Play
+↓
+Gameplay
+↓
+Wave
+↓
+Game Over
+hoặc
+↓
+Victory
+mà không cần thao tác trong Unity Editor.
+________________________________________
+13. PRIORITY
+MUST HAVE
+•	Player Movement.
+•	Player Health.
+•	Enemy Follow.
+•	Enemy Spawn.
+•	Weapon Aim.
+•	Auto Fire.
+•	Bullet.
+•	Enemy Health.
+•	Kill Count.
+•	Wave System.
+•	Difficulty Scaling.
+•	Game Over.
+•	Victory.
+SHOULD HAVE
+•	Weapon Upgrade.
+•	Item Drop.
+•	Pause.
+•	Wave Complete UI.
+OPTIONAL
+•	Sound.
+•	Particle.
+•	Animation.
+•	Screen Shake.
+•	Object Pooling.
+•	Event System.
+•	Boss.
+________________________________________
+14. RELEASE SCOPE
+Version 0.1 - Prototype
+•	Player Movement.
+•	Enemy Follow.
+•	Weapon Aim.
+•	Auto Fire.
+•	Bullet.
+•	Enemy Damage.
+•	Enemy Death.
+Version 0.2 - MVP
+•	Enemy Spawn.
+•	Player Health.
+•	Contact Damage.
+•	Damage Cooldown.
+•	Timer.
+•	Wave.
+•	Game Over.
+Version 0.3 - Feature Complete
+•	Weapon Upgrade.
+•	Item Drop.
+•	3 Enemy Types.
+•	9 Wave.
+•	3 Map Themes.
+•	Main Menu.
+•	Pause.
+•	Victory.
+Version 1.0 - Final
+•	Gameplay hoàn chỉnh.
+•	UI hoàn chỉnh.
+•	Cân bằng Gameplay.
+•	Sound.
+•	Effects.
+•	Bug Fixing.
+•	Windows Build.
+________________________________________
+15. FINAL PRODUCT DEFINITION
+Sản phẩm cuối cùng là một:
+2D Top-down Survival Auto Shooter
+Bao gồm:
+PLAYER
+•	Movement.
+•	HP.
+•	Damage Cooldown.
+WEAPON
+•	1 Weapon.
+•	Mouse Aim.
+•	Auto Fire.
+•	4 Weapon Levels.
+ENEMY
+•	Normal Enemy.
+•	Fast Enemy.
+•	Tank Enemy.
+PROGRESSION
+•	9 Wave.
+•	3 Map Themes.
+•	Difficulty Scaling.
+ITEM
+•	Health Pickup.
+•	Speed Boost.
+•	Damage Boost.
+UI
+•	HP.
+•	Timer.
+•	Wave.
+•	Kill Count.
+•	Weapon Level.
+GAME FLOW
+•	Main Menu.
+•	Playing.
+•	Pause.
+•	Wave Complete.
+•	Game Over.
+•	Victory.
+________________________________________
+16. FINAL PRINCIPLE
+Dự án ưu tiên:
+Game hoàn chỉnh và chơi được từ đầu đến cuối
+hơn là:
+Game có quá nhiều tính năng nhưng chưa hoàn thiện.
+Mọi Optional Feature chỉ được thêm sau khi toàn bộ Core Gameplay và MVP hoạt động ổn định.
