@@ -4,6 +4,8 @@ This describes source and serialized assets in this repository as inspected 2026
 
 ## Current scene flow
 
+Status labels distinguish source from wiring: a script can contain behavior without being attached to a prefab or scene, and serialized presence alone does not confirm runtime behavior. The table below describes inspected evidence, not a target implementation plan.
+
 ```text
 Launch enabled build scene: SampleScene
     ↓
