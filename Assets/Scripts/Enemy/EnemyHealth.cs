@@ -35,7 +35,17 @@ public class EnemyHealth : MonoBehaviour
         maxHealth = Mathf.Max(1, health);
         currentHealth = maxHealth;
     }
-
+    public int AliveCount
+    {
+        get
+        {
+            if (enemiesParent == null) return 0;
+            int count = 0;
+            foreach (EnemyHealth enemy in enemiesParent.GetComponentsInChildren<EnemyHealth>())
+                if (enemy.CurrentHealth > 0) count++;
+            return count;
+        }
+    }
     private void Die()
     {
         Debug.Log($"{gameObject.name} đã bị tiêu diệt!");
