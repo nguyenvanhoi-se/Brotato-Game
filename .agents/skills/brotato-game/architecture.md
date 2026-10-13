@@ -92,6 +92,14 @@ This describes source calls and saved prefab composition, not a functioning scen
 
 No manager class or manager GameObject is present in scanned Assets/source. `EnemySpawner` is the only orchestration-like gameplay component found; it is not a manager singleton and is not scene-wired. System statuses are in [gameplay.md](gameplay.md).
 
+## Rules for extending the observed architecture
+
+- Treat the source and serialized wiring above as an inspected baseline, not a target design or guarantee that another branch is identical. Re-check the current checkout before implementation.
+- Existing code uses focused `MonoBehaviour` components and explicit Unity component/serialized references. Preserve that shape for small gameplay changes when it fits the requirement.
+- Do not add Clean Architecture layers, dependency injection, a global event bus, singleton managers, or new gameplay systems by default. Introduce a boundary only when a concrete requirement and current code justify its ownership and lifecycle.
+- Keep runtime behavior, data/configuration, and scene composition explicit. A `ScriptableObject`, manager, service, or interface is a design option only when the inspected use case benefits from it; none is an assumed project convention.
+- Distinguish a declared type, a component attached to a prefab, and a component wired into a scene. They are separate facts and each needs evidence.
+
 Concrete coupling/risk findings:
 
 - Enemy target discovery falls back to hard-coded `Player` tag, but no custom tag is declared and both prefab roots are Untagged. A caller could avoid fallback by using `SetTarget`, but none is wired in the scene.

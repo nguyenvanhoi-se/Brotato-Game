@@ -41,7 +41,7 @@ If status shows changes before work:
 - Limit edits to new/unmodified requested files where possible. Tell the user about conflicts before any action that would overwrite their work.
 - Recheck status after editing and distinguish pre-existing changes from files created for the task.
 
-At the snapshot inspection, `Brotato_CD4.slnx` was already modified and `.agents/` was already untracked. Preserve if still present; re-check because the workspace can change.
+Working-tree state changes over time; always use the current `git status` and diff instead of relying on a prior snapshot or report.
 
 ## Prohibited without explicit request
 

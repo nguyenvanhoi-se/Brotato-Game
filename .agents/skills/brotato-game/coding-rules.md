@@ -17,6 +17,14 @@ These rules preserve current Unity serialization and the small MonoBehaviour-bas
 - No project-wide singleton or event convention was found. Do not add one by assumption. When events are needed, define ownership and pair subscriptions with cleanup.
 - No project-defined ScriptableObject data source was found. Do not describe `WaveSettings` as a ScriptableObject; its declaration is absent.
 
+## Architecture choices for new code
+
+- Match the smallest existing Unity boundary that satisfies the task. Keep Unity lifecycle and serialized component ownership visible; do not add layers, service locators, dependency-injection packages, event buses, or manager singletons as boilerplate.
+- Keep data/configuration in the representation the current feature already uses. Introduce a `ScriptableObject`, interface, or shared service only for a verified reuse, ownership, testing, or lifecycle need; describe the tradeoff in the plan/review.
+- Use `Update` for frame-driven work and `FixedUpdate` for Rigidbody2D movement/physics. Cache stable component references; avoid repeated global searches and hierarchy scans in hot paths.
+- A source declaration does not prove a component is on the active prefab or scene object. Check both before relying on it, and keep missing types/references explicit rather than masking them with fallback systems.
+- This checkout has the Unity Test Framework package, but no test source or test assembly definition was found during the inspected scan. Do not claim a test harness exists; use the project's available checks and state when Unity Editor/runtime validation is unavailable.
+
 ## Public and serialized API safety
 
 - Preserve class names, public methods/properties, and serialized field names where possible.

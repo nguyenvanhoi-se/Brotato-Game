@@ -1,51 +1,45 @@
 ---
 name: brotato-game
-description: Project-specific Unity Brotato-Game development skill for architecture, gameplay, debugging, coding conventions, Unity setup, and Git workflow.
+description: Project guidance for changing, debugging, or reviewing Brotato-Game Unity code and serialized assets.
 metadata:
   short-description: Work safely in the Brotato Unity project
 ---
 
-# Role and goal
+# Brotato-Game project workflow
 
-Act as the engineering agent for this Unity project. Help implement requested features, debug defects, refactor narrowly, and explain the code while preserving the architecture that actually exists in the checkout. The accompanying files are a static repository snapshot, not a promise that the current branch still matches it.
+Use this skill to make scoped changes to Brotato-Game and explain the current implementation. Its architecture and gameplay documents are static snapshots; the checked-out source and Unity serialization remain authoritative.
 
-## When this skill applies
+## When to use it
 
-Use it for changes, debugging, refactoring, architectural questions, or Unity setup work in this repository. It is not an instruction to add gameplay features automatically or to invent systems from the product plan.
+Use for repository-specific implementation, debugging, architecture, gameplay, or Unity setup questions. Do not infer a request to add features from the PRD or assume planned systems already exist.
 
 ## Source-of-truth rule
 
-At the start of each task, inspect `git status` and relevant files. For implementation facts, prefer current C# source, scene/prefab YAML, `.meta` references, `ProjectSettings`, and `Packages/manifest.json` over older prose. `Doc/` and the root `Product Requirements Document` contain claims/plans that do not match the checked-in `Assets/` snapshot in several places. Record differences as drift; do not silently turn a documented goal into an implemented feature. If a required type or asset is not present, say `Not found in repository` or `Unknown / Not verified`.
+At task start, inspect `git status` and the relevant C# source, Scene/Prefab YAML, `.meta` references, and settings. These outrank `Doc/`, README, and the Product Requirements Document, which may describe a different or planned state. Record drift rather than promoting planned behavior to fact. For absent evidence, say `Not found in repository` or `Unknown / Not verified`.
 
-Read [architecture.md](architecture.md) before architecture-sensitive work. Read [gameplay.md](gameplay.md) for gameplay questions, [coding-rules.md](coding-rules.md) before code edits, [debugging.md](debugging.md) for defects, [unity-setup.md](unity-setup.md) for editor/asset settings, and [git-workflow.md](git-workflow.md) before Git operations.
+Read only the relevant reference: [architecture.md](architecture.md) for design boundaries; [gameplay.md](gameplay.md) for implemented gameplay; [coding-rules.md](coding-rules.md) before C# edits; [debugging.md](debugging.md) for defects; [unity-setup.md](unity-setup.md) for Unity configuration; and [git-workflow.md](git-workflow.md) before Git mutations.
 
 ## Task workflow
 
-1. Restate the requested outcome in concrete terms and identify the files/systems that current code actually uses.
-2. Trace references in both directions: callers, component lookups, serialized scene/prefab links, script GUIDs, events, and data types. Search for every reference before changing a public API, class name, serialized field, or asset.
-3. Reuse existing implementations when present. Make the smallest coherent change; do not add a second manager, health model, input path, data source, or duplicate system.
-4. Preserve unrelated user changes and serialized tuning. Do not edit gameplay, scenes, prefabs, or ProjectSettings for a documentation-only request.
-5. Verify only what the user requested and the environment supports. Report checks actually run; distinguish static inspection from Unity compilation, Play Mode, and human playtesting.
-6. Update relevant project documentation when actual architecture or behavior changes. Keep these skill files consistent and label unknowns.
+1. Identify the requested behavior and inspect its current owner, callers, dependencies, and serialized wiring.
+2. Reuse the current design and make the smallest coherent change. Do not create duplicate systems or add abstractions without a concrete need.
+3. Before public API or asset changes, search code references, Scene/Prefab YAML, overrides, and `.meta` GUIDs.
+4. Preserve unrelated working-tree changes and Unity tuning. Keep documentation-only tasks out of gameplay assets/settings.
+5. Run only the relevant checks requested and supported; distinguish static inspection, Editor compilation, Play Mode, and playtesting.
+6. Update the relevant reference when verified architecture or behavior changes; keep snapshots and unknowns explicit.
 
-## Safe change rules
+## Delegation
 
-- Preserve existing class names, public members, serialized field names, and prefab/scene references unless required and all references have been checked.
-- Do not delete code/assets based on a single search result. Inspect GUIDs, YAML references, build settings, and code callers first.
-- Avoid broad refactors, package changes, or project-wide setup changes unless requested.
-- Do not assume a script is wired because its `.cs` file exists; inspect scene/prefab components. Do not assume a prefab is used because it exists; search for instances/references.
-- Do not treat an Input Actions asset or package as proof that gameplay consumes it.
-- Follow [git-workflow.md](git-workflow.md). Never run destructive history/worktree commands listed there without an explicit request.
+Delegate only independent, bounded work and include the concrete request, relevant evidence, and expected output. Avoid parallel agents editing the same files.
 
-## Debug and Unity workflow
+- `code-mapper`: read-only ownership, call-path, and serialized-reference mapping before multi-file implementation.
+- `architect-reviewer`: read-only design, coupling, and duplication review when a feature changes system boundaries.
+- `debugger`: read-only evidence-led root-cause analysis for a reported defect.
+- `game-developer`: scoped implementation after mapping the actual code and Unity wiring; preserve unrelated work and serialized references.
 
-Use the evidence-led checklist in [debugging.md](debugging.md). Confirm the symptom, identify the exact component and lifecycle path, trace data/object references, inspect serialized wiring, then make a scoped fix. Use [unity-setup.md](unity-setup.md) as an inspected baseline and re-check current files. Preserve `.meta` GUID links and Unity serialization. Do not invoke setup tools or edit scenes merely to validate source. If Editor/runtime verification is unavailable or not requested, state that limit.
-
-## Git workflow
-
-Check `git status` before and after work. If there are existing user changes, do not overwrite, reset, clean, stage, commit, pull over, or otherwise absorb them without authorization; preserve them and tell the user if they affect the task. The documented branch workflow is not blanket authorization to push unrelated work.
+The parent agent integrates findings, owns overlapping decisions, and reports runtime verification that remains `Unknown / Not verified`.
 
 ## Reporting
 
-Respond in the user's language. Summarize files changed, verified implementation findings, checks actually performed, and remaining unknowns/risks. Separate `Implemented`, `Not implemented / Not found in repository`, and `Unknown / Not verified` where useful. Never present planned PRD behavior or stale documentation as repository fact.
+Report changed files, evidence, checks actually run, and remaining `Not found in repository` / `Unknown / Not verified` items. Keep the report in Vietnamese and do not present PRD plans as implementation facts.
 
