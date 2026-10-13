@@ -1,45 +1,36 @@
-# Project guidance
+# Brotato-Game — Instructions for Codex Agents
 
-Small university Unity 2D Brotato-like game; three student developers. Prefer readable, simple code and a complete gameplay loop. Explain code and Unity setup in Vietnamese.
+## Source of truth
 
-## Read first
+- The current repository is the source of truth: inspect C# source, scenes, prefabs, `.meta` GUIDs, `ProjectSettings`, and `Packages/manifest.json` before making claims or changes.
+- Read `.agents/skills/brotato-game/SKILL.md` and the relevant companion reference for project-specific architecture, gameplay, Unity, debugging, and Git context.
+- Existing README/Doc/PRD content may describe plans or an older snapshot. Do not treat an unverified system as implemented. Mark uncertain facts `Unknown / Not verified`.
 
-- [State and next steps](docs/STATE.md): current handoff, bugs and verification limits.
-- [Architecture](docs/ARCHITECTURE.md): actual systems and scene dependencies.
-- [Decisions](docs/DECISIONS.md): reasons and constraints to preserve.
-- [Game design](docs/GAME_DESIGN.md): current versus planned rules; read before gameplay changes.
-- [Original plan](ke_hoach_do_an_game_2d_brotato_like.md): full roadmap, not proof that features exist. Later explicit user decisions override its examples.
+## Implementation rules
 
-## Constraints and conventions
+1. Inspect the current code and serialized Unity assets before every change. Trace the caller, owning component, dependencies, scene/prefab wiring, and configuration.
+2. Prefer reusing the architecture and systems already present. Never create a duplicate Manager/System when an implementation exists.
+3. Keep changes small, targeted, safe, and easy to inspect. Do not perform a broad refactor unless requested.
+4. Before renaming or deleting a class, field, or method, search code callers and serialized references, including scene/prefab YAML, overrides, and `.meta` GUID links.
+5. Protect Unity Scenes, Prefabs, Inspector values, serialized field names, asset GUIDs, and user changes. Confirm component presence and reference assignments rather than assuming them.
+6. If a change needs Inspector setup, report the exact `GameObject`, `Component`, `Field`, and `Reference` the user must assign.
+7. Find and support a root cause before proposing or applying a bug fix. Separate evidence from hypotheses.
+8. For a large task (multiple systems, broad cross-file work, architecture changes, or an unclear multi-stage feature), make a short plan before implementation.
+9. Do not change the Unity version, upgrade/add packages, or alter project-wide Unity settings unless the user explicitly requests it.
+10. Do not overwrite uncommitted working-tree changes. Inspect `git status` first; preserve user edits and isolate changes. If safe progress is blocked, explain why.
+11. Never run `git reset --hard`, `git clean -fd`, or `git push --force` unless the user explicitly requests that exact operation.
+12. Do not automatically commit or push. Only do so when the user asks.
+13. Do not delete code/assets or rewrite architecture without checking dependencies and references first.
+14. Do not claim compilation, runtime behavior, tests, or playability unless actually verified. If not confirmed, write `Unknown / Not verified`.
+15. Communicate with the user in Vietnamese.
 
-- Use configured Unity (currently 6000.3.22f1); do not upgrade Unity or install/update packages without an explicit request.
-- Preserve unrelated working-tree changes. Inspect code AND serialized scene/prefab values; Inspector values override C# initializers.
-- Prefer private fields, [SerializeField] tunables, small focused MonoBehaviours and meaningful names. Avoid third-party libraries, unnecessary frameworks/interfaces/inheritance/design patterns.
-- Scripts: Assets/Scripts/{Core,Player,Weapon,Enemy,Wave,Item,UI}/; scenes: Assets/Scenes/; prefabs: Assets/Prefabs/.
-- Main gameplay scene: Assets/Scenes/GameScene.unity. Keep existing scenes/assets; older Gameplay.unity is not equivalent.
-- Player uses normalized WASD input, Rigidbody2D, zero gravity and locked physics rotation. Use the existing Input System.
-- Preserve one-life gameplay (HP zero -> Game Over), nonnegative HP/timers, bounded living enemies, mouse aim and automatic fire without clicks.
-- Current user-approved MVP: 3 waves lasting 30/30/45 seconds, living caps 10/15/30 and enemy HP 10/20/30. See docs/GAME_DESIGN.md for spawn/speed/transition policy. Final 9-wave scope is planned.
-- Avoid manually rewriting large .unity, .prefab, .meta or ProjectSettings files. Prefer Unity Inspector or small Editor automation. Do not change Packages/manifest.json without necessity and authorization.
-- Commit asset .meta files with assets; generated Library/, Temp/, Logs/, builds and IDE files are not source.
-- Inspect and explain the smallest change before editing. Do not add the next feature automatically; stop at requested scope.
-- Check C# compilation and relevant Unity behavior. Compilation is not gameplay verification; claim Play Mode passed only if actually executed.
-- Explain Inspector wiring/manual tests when required; report files changed, checks and limitations.
+## Subagent routing
 
-## Session workflow
+Use project agents for bounded tasks when delegation is useful; provide the original request and concrete evidence/scope to each agent.
 
-At the beginning of a new session:
+- `code-mapper`: read-only code path, ownership, entry point, and dependency mapping before implementation.
+- `game-developer`: targeted Unity/gameplay implementation after inspecting the project Skill and current wiring.
+- `debugger`: read-only root-cause analysis and evidence-backed fix recommendation.
+- `architect-reviewer`: read-only architecture, coupling, duplication, and feature design review.
 
-1. Read AGENTS.md.
-2. Read docs/STATE.md.
-3. Read relevant parts of docs/ARCHITECTURE.md.
-4. Read relevant decisions in docs/DECISIONS.md (and docs/GAME_DESIGN.md for gameplay).
-5. Inspect current git status/diff and relevant code before changing anything.
-
-At the end of a meaningful task:
-
-1. Update docs/STATE.md.
-2. Update docs/DECISIONS.md if a meaningful technical/design decision was made.
-3. Update docs/ARCHITECTURE.md if architecture changed.
-4. Update docs/GAME_DESIGN.md if stable game rules/design changed.
-5. Record tests/checks performed and remaining issues; label uncertainty Needs verification or Unknown.
+All agents must follow these instructions and `.agents/skills/brotato-game/SKILL.md`. Re-inspect current files; do not assume a system exists just because an older document mentions it.
