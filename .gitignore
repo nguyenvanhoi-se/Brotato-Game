@@ -26,3 +26,8 @@
 # File rác hệ điều hành
 .DS_Store
 Thumbs.db
+
+# E2E dependencies, isolated Unity clones, builds and volatile evidence
+/.e2e/
+__pycache__/
+.pytest_cache/

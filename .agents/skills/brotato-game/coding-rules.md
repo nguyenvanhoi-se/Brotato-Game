@@ -15,7 +15,7 @@ These rules preserve current Unity serialization and the small MonoBehaviour-bas
 - Keep dependencies visible via `[RequireComponent]`, serialized fields, parameters, or documented lookups. Confirm the required component exists on the actual scene/prefab object, not only in source.
 - Reuse existing implementations. Before creating a manager/system, search source declarations, prefab instances, scene components, asset GUIDs, and call sites.
 - No project-wide singleton or event convention was found. Do not add one by assumption. When events are needed, define ownership and pair subscriptions with cleanup.
-- No project-defined ScriptableObject data source was found. Do not describe `WaveSettings` as a ScriptableObject; its declaration is absent.
+- `WaveSettings` is a restored `[Serializable]` class with a five-argument constructor; it is not a ScriptableObject. Preserve its source-backed contract and do not create a replacement type for tests.
 
 ## Architecture choices for new code
 
@@ -23,7 +23,7 @@ These rules preserve current Unity serialization and the small MonoBehaviour-bas
 - Keep data/configuration in the representation the current feature already uses. Introduce a `ScriptableObject`, interface, or shared service only for a verified reuse, ownership, testing, or lifecycle need; describe the tradeoff in the plan/review.
 - Use `Update` for frame-driven work and `FixedUpdate` for Rigidbody2D movement/physics. Cache stable component references; avoid repeated global searches and hierarchy scans in hot paths.
 - A source declaration does not prove a component is on the active prefab or scene object. Check both before relying on it, and keep missing types/references explicit rather than masking them with fallback systems.
-- This checkout has the Unity Test Framework package, but no test source or test assembly definition was found during the inspected scan. Do not claim a test harness exists; use the project's available checks and state when Unity Editor/runtime validation is unavailable.
+- This checkout has the Unity Test Framework package and an independent Python/pytest real-player harness under `E2E/`. Follow `../unity-e2e-testing/SKILL.md`; distinguish its actual runtime results from infrastructure selftests and static inspection.
 
 ## Public and serialized API safety
 

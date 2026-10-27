@@ -1,5 +1,9 @@
 # Repository architecture snapshot
 
+Current update 2026-10-27: the following September snapshot is historical. PlayerController, PlayerHealth and WaveSettings source/meta are now restored; the build scene still has only camera/light. An independent real-player E2E framework now runs without an external SDK/server. See [current project audit](../../../E2E/PROJECT_AUDIT.md) and [runtime evidence](../../../E2E/VERIFICATION.md). Do not treat the absence claims below as the current checkout.
+
+## Historical snapshot
+
 Inspected 2026-09-29 from the checked-out repository. This is static file inspection; no Unity Editor, Play Mode, or player build was run for this report. Re-inspect before relying on it later.
 
 ## Repository layout

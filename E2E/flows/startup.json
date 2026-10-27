@@ -1,0 +1,15 @@
+{
+  "id": "E2E-001",
+  "kind": "natural",
+  "steps": [
+    {"action": "launch"},
+    {"action": "assert_scene", "equals": "SampleScene"},
+    {"action": "wait_visible", "name": "Main Camera"},
+    {"action": "wait_visible", "name": "Global Light 2D"},
+    {"action": "assert_property", "name": "Main Camera", "component": "UnityEngine.Camera", "property": "orthographic", "equals": true},
+    {"action": "assert_property", "name": "Main Camera", "component": "UnityEngine.Camera", "property": "orthographicSize", "equals": 5.0},
+    {"action": "screenshot", "file": "startup.png"},
+    {"action": "expect_no_errors"},
+    {"action": "close"}
+  ]
+}

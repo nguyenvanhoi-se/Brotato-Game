@@ -1,5 +1,9 @@
 # Gameplay systems: implementation status
 
+Current update 2026-10-27: the following September snapshot is historical. PlayerController, PlayerHealth and WaveSettings source/meta are now restored; the build scene still has only camera/light. An independent real-player E2E framework now runs without an external SDK/server. See [current project audit](../../../E2E/PROJECT_AUDIT.md) and [runtime evidence](../../../E2E/VERIFICATION.md). Do not treat the absence claims below as the current checkout.
+
+## Historical snapshot
+
 This describes source and serialized assets in this repository as inspected 2026-09-29. The root Product Requirements Document is a product plan and `Doc/` has claims from a different/larger snapshot; neither upgrades an absent system to implemented status.
 
 ## Current scene flow

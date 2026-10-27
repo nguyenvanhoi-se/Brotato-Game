@@ -19,6 +19,8 @@ At task start, inspect `git status` and the relevant C# source, Scene/Prefab YAM
 
 Read only the relevant reference: [architecture.md](architecture.md) for design boundaries; [gameplay.md](gameplay.md) for implemented gameplay; [coding-rules.md](coding-rules.md) before C# edits; [debugging.md](debugging.md) for defects; [unity-setup.md](unity-setup.md) for Unity configuration; and [git-workflow.md](git-workflow.md) before Git mutations.
 
+For real-player E2E authoring, execution and coverage, use [unity-e2e-testing](../unity-e2e-testing/SKILL.md). It runs an independent development-build driver; current runtime evidence lives in `E2E/VERIFICATION.md`.
+
 ## Task workflow
 
 1. Identify the requested behavior and inspect its current owner, callers, dependencies, and serialized wiring.
