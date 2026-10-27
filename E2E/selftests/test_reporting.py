@@ -15,8 +15,8 @@ class ReportingTests(unittest.TestCase):
     def test_blocked_is_never_pass_and_junit_preserves_reason(self):
         with temporary_workspace() as folder:
             out = Path(folder)
-            rows = [dict(id=c["id"], status="BLOCKED", actual="No licensed server <not a game failure>") for c in CASES]
-            data = report(out, rows, {"blockers": ["missing server"]}, 2)
+            rows = [dict(id=c["id"], status="BLOCKED", actual="Unity Editor unavailable <not a game failure>") for c in CASES]
+            data = report(out, rows, {"blockers": ["missing Editor"]}, 2)
             self.assertEqual(data["summary"]["PASS"], 0)
             self.assertEqual(data["summary"]["BLOCKED"], len(CASES))
             self.assertEqual(ET.parse(out / "junit.xml").getroot().attrib["skipped"], str(len(CASES)))

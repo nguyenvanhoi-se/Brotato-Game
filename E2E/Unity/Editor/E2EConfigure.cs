@@ -19,7 +19,8 @@ namespace Brotato.E2E.Editor
                 throw new InvalidOperationException("E2E configuration requires an isolated clone marker.");
             string[] symbols = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.Standalone)
                 .Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
-                .Concat(new[] { "ALTTESTER", "BROTATO_E2E" }).Distinct().ToArray();
+                .Where(symbol => symbol != "ALTTESTER")
+                .Concat(new[] { "BROTATO_E2E" }).Distinct().ToArray();
             PlayerSettings.SetScriptingDefineSymbols(NamedBuildTarget.Standalone, symbols);
             AssetDatabase.SaveAssets();
             Debug.Log("E2E scripting symbols persisted for next Editor invocation: " + string.Join(";", symbols));

@@ -1,79 +1,88 @@
-# Kiểm kê và coverage audit — 20/10/2026
+# Kiểm kê và coverage audit — 27/10/2026
 
-Đọc AGENTS.md, skill brotato-game và các reference architecture/gameplay/coding-rules/
-unity-setup; kiểm tra lại source/serialization thay vì dùng PRD làm bằng chứng.
-Đã đọc toàn bộ 7 C# gameplay/data hiện tại (4 Enemy + 2 Player + WaveSettings),
-2 scene, 2 prefab; kiểm tra input asset, Packages và các settings
-build/version/input/physics/time/render. `inventory.json` mỗi run hash toàn bộ file
-Assets/Packages/ProjectSettings và xuất APIs, hierarchy names, GUID references.
+Đã đối chiếu toàn bộ7 source gameplay/data, 2 scene, 2 prefab và83 file trong
+Assets/Packages/ProjectSettings với snapshot đầu nhiệm vụ. Source/serialization là
+bằng chứng chính; Doc/PRD và các snapshot tháng9 chỉ là tài liệu lịch sử.
 
-## Hiện trạng có bằng chứng
+## Luồng tự nhiên hiện có
 
-| Feature/owner | Bằng chứng | Reachable từ build scene |
+EditorBuildSettings chỉ bật Assets/Scenes/SampleScene.unity. Scene gồm Main Camera
+(orthographic size5, AudioListener, URP camera data) và Global Light2D. Không có
+Player, Enemy, Spawner, UI, EventSystem hay manager; không có startup source nào
+khởi tạo chúng. Flow thực tế có thể kiểm thử là **launch → scene/camera/light →
+idle → đóng tiến trình**, cùng relaunch. Không có vòng chơi đến thắng/thua để giả định.
+
+URP2DSceneTemplate.unity cũng chỉ camera/light và không được bật trong build.
+
+## Owner và wiring đã kiểm tra
+
+| Owner | Behavior trong source | Wiring / testability |
 |---|---|---|
-| Startup | EditorBuildSettings.asset:8-10 bật SampleScene; SampleScene.unity:126/243 có Main Camera + Global Light 2D | Chỉ candidate startup; runtime chưa chạy được |
-| Enemy chase | EnemyController.cs:11/23/40; Enemy.prefab:170 GUID `18e7bd69ebdaec44daa2658a812f5bb2`; speed=2, target null | Không: prefab chưa instance trong scene |
-| Enemy health | EnemyHealth.cs:12/17/33/39; max30, damage clamp, Destroy | Không attach prefab/scene, không damage caller |
-| Spawner | EnemySpawner.cs:26/36/46/59/71; WaveSettings gốc đã phục hồi, 5 fields + constructor | Không attach scene; có thể dựng simulated fixture |
-| Contact damage | EnemyContactDamage.cs:7/12/17 gọi PlayerHealth.TakeDamage; PlayerHealth gốc HP100/cooldown.75 | Không attach prefab/scene; fixture Contact đã có implementation |
-| Player prefab | Player.prefab:111 GUID `62d4b7f376264d24f9fe7489edfe02e0`; source/meta PlayerController đã phục hồi khớp GUID | Không scene instance; PlayerHealth chưa attach vào prefab gốc |
-| Input configuration | InputSystem_Actions.inputactions: Player/UI maps; activeInputHandler=1; PlayerController đọc Keyboard WASD trực tiếp | Chưa có player trong build scene; action asset không có consumer được xác minh |
-| Render/physics | URP 17.3.0/current quality 5, camera ortho5; prefab gravityScale0; fixed timestep .02 | Cấu hình đọc được; output/runtime chưa kiểm chứng |
-| Template scene | Settings/Scenes/URP2DSceneTemplate.unity, camera+light | Không enabled build scene, không navigation |
+| PlayerController | Keyboard.current WASD, normalize, Rigidbody2D FixedUpdate, xoay visual | Script/meta GUID khớp Player prefab; prefab không instance trong build scene |
+| PlayerHealth | HP100, cooldown.75, ignore invalid/dead/disabled damage, clamp0, Died event | Source gốc đã phục hồi; không attach Player prefab/scene; Contact fixture dùng class thật |
+| EnemyController | Target/tag fallback, speed clamp≥.1, pursuit trong FixedUpdate | Có trên Enemy prefab; targetnull/speed2; không scene instance |
+| EnemyHealth | HP30, ignore damage≤0/dead, Initialize clamp≥1, Destroy | Không attach Enemy prefab/scene; fixture thêm component có nhãn simulated |
+| EnemyContactDamage | Trigger enter/stay → GetComponentInParent<PlayerHealth> → TakeDamage(10) | Không attach Enemy prefab; Contact fixture dùng component/Physics2D thật |
+| EnemySpawner | Configure, interval≥.05, cap≥1,16 attempts/4edges, configure stats, clear health children | Không attach scene; không production caller ConfigureForWave/ClearEnemies |
+| WaveSettings | Serializable class gốc,5 fields/defaults + constructor5args | Dữ liệu được phục hồi; không có WaveManager hoặc wave flow trong scene |
 
-`TagManager.tags=[]` chỉ là custom tags rỗng. Unity có built-in Player tag;
-không kết luận tag undefined. Player prefab đang Untagged, nên fallback tìm
-`Player` không tự trỏ vào prefab này khi instantiate nguyên trạng.
+Giữ nguyên các source đã phục hồi và .meta; xem RESTORED_SOURCES.md về provenance.
+Không thêm manager, không sửa prefab/tuning để làm test pass.
 
-Enemy prefab GUID `c2d12958e9d2ec94880a6cea5e68e76b` có EnemyController,
-Rigidbody2D và trigger collider; **không EnemyHealth/EnemyContactDamage**.
-AliveCount/ClearEnemies chỉ duyệt EnemyHealth, nên hai test SIM-025/026 kiểm tra
-cap/cleanup của prefab nguyên trạng và có thể phơi bày defect khi chạy được.
-Hiện chưa có gameplay runtime failure để báo từ các case này.
+Player prefab: Untagged, Rigidbody2D gravity0/rotation constrained, CapsuleCollider
+nontrigger, PlayerController; child PlayerVisual/SpriteRenderer. Không PlayerHealth.
+Enemy prefab: Untagged, Rigidbody2D gravity0, trigger CapsuleCollider và EnemyController;
+**không EnemyHealth/EnemyContactDamage**. AliveCount/ClearEnemies của spawner chỉ duyệt
+EnemyHealth. SIM-025/026 phải quan sát vấn đề cap/cleanup của prefab nguyên trạng,
+không được xfail hoặc sửa source để bỏ qua assertion.
 
-Đã phục hồi source thật theo `RESTORED_SOURCES.md`; không thêm manager, không
-đổi scene/prefab/tuning hoặc dùng class giả cho dependency.
+TagManager.tags rỗng chỉ là custom tags rỗng; không chứng minh built-in Player tag
+undefined. Input asset khai báo Player/UI maps nhưng không có action-map consumer
+được xác minh; PlayerController đọc Keyboard trực tiếp. activeInputHandler1,
+fixed timestep.02; nguồn runInBackground0 được giữ, chỉ clone E2E đổi thành true.
+Packages giữ nguyên Input System1.20.0, URP17.3.0, UGUI2.0.0, Test Framework1.6.0.
 
-## Feature → flow → test mapping
+## Feature → Flow → Test → Result → Coverage
 
-| Feature | Flow | Test ID | Execution/Coverage |
+| Feature | Flow | Test ID / kind | Execution và coverage |
 |---|---|---|---|
-| Startup | Launch→scene/camera/light→screenshot→stop | E2E-001 | Xem results.json; server chưa chạy thì Blocked |
-| Startup idle | Launch→idle→scene còn hoạt động→stop | E2E-002 | Như trên |
-| Scene reload | AltDriver.LoadScene→scene fresh | E2E-003 (simulated) | Không phải user navigation |
-| Process restart | Launch→stop→launch lại→initial scene | E2E-004 | Chưa xác minh runtime |
-| Enemy chase | Dựng enemy/target→FixedUpdate→null/destroy target/speed clamps | SIM-001…005 | Simulated, hiện Blocked |
-| Enemy HP | Dựng Health→damage/invalid/overkill/init/reinit→Destroy | SIM-006…012 | Simulated, hiện Blocked |
-| Enemy wiring | Instantiate prefab nguyên trạng→đọc component/speed | SIM-013 | Simulated, không coi thiếu Health là combat hoàn chỉnh |
-| Spawner lifecycle | Configure→spawn→cap→clear | SIM-014 | Simulated, hiện Blocked |
-| Spawner dependencies | Bỏ từng reference/settings→không spawn | SIM-015…019 | Simulated, hiện Blocked |
-| Spawner boundaries | Interval clamp/cap clamp/impossible minimum distance/reconfigure/4 edges | SIM-020…024 | Simulated, hiện Blocked |
-| Saved prefab regression | Spawn nguyên prefab→cap/clear có hiệu lực | SIM-025…026 | Chưa thực thi; không hardcode expected failure |
-| Contact | Collider con enter/stay/cooldown/exit; collider không player | SIM-027…028 | Đã implement bằng actual PlayerHealth/EnemyContactDamage; runtime chờ server |
+| Startup lifecycle | Launch→verify scene/camera/light→PNG→close, declarative JSON | E2E-001 / natural | Xem report runtime mới nhất |
+| Idle | Launch→idle2s→verify scene→close | E2E-002 / natural | Xem report runtime mới nhất |
+| Scene reload | Driver LoadScene→fresh scene | E2E-003 / simulated | Không phải navigation do người chơi thực hiện |
+| Relaunch | Launch→stop→new process→initial scene | E2E-004 / natural | Xem report runtime mới nhất |
+| Enemy pursuit | Dựng actual prefab/target→movement/null/destroy/speed clamps | SIM-001…005 / simulated | Quan sát component thật, không phải player journey |
+| Enemy HP | Damage/invalid/overkill/init/reinit→Destroy | SIM-006…012 / simulated | Quan sát HP/lifetime thật |
+| Saved prefab wiring | Instantiate nguyên trạng→component/speed | SIM-013 / simulated | Không coi thiếu Health là combat hoàn chỉnh |
+| Spawner lifecycle/dependencies | Configure→spawn/cap→clear; thiếu từng reference | SIM-014…019 / simulated | Actual Spawner/WaveSettings, fixture data rõ ràng |
+| Spawner boundaries | Interval/cap clamp, min distance, reconfigure,4edges | SIM-020…024 / simulated | Có tolerance frame cho first-observed sample |
+| Prefab regression | Saved prefab→cap và cleanup có hiệu lực | SIM-025…026 / simulated | FAIL nếu wiring hiện tại thực sự làm sai contract |
+| Contact | Child collider enter/stay/cooldown/exit, non-player collider | SIM-027…028 / simulated | Actual PlayerHealth/EnemyContactDamage và callbacks Physics2D |
 
-Specification chi tiết từng ID gồm tất cả trường yêu cầu nằm trong catalog và
-HTML report; actual/status xuất từ pytest, không điền trước PASS.
-Coverage gaps có nhãn Not Tested riêng trong catalog và report: Start tag fallback,
-target trùng vị trí/gán lại, damage sau chết cùng frame/giá trị int giới hạn, spawn bù sau
-chết/khôi phục reference, exact retry count, Player prefab/input chưa có flow,
-cấu hình nền tảng.
+Catalog giữ32 IDs: **3 natural +29 simulated**. HTML/JSON/JUnit của mỗi run chứa
+expected/actual/status từng ID và Tested/Failed/Not Tested/Blocked riêng biệt.
+Mọi tỷ lệ theo case chỉ áp dụng catalog đã biết, không đồng nghĩa coverage toàn game.
 
-## Not Applicable / Not found in repository
+## Gaps và Not Applicable
 
-Không có game manager/state/wave progression; không menu/HUD/UI/scene navigation;
-không weapon/projectile/reward/XP/shop/currency;
-không win/lose/restart gameplay; không save/load/progress/user settings; không audio/
-animation gameplay. Các mục này không được tính là Tested hoặc PASS.
-Template và input declaration không nâng trạng thái chúng thành feature hoạt động.
+Sáu nhóm Not Tested được giữ: tag fallback/retarget/coincident target; damage lặp
+sau chết cùng frame/giới hạn int; spawn bù/khôi phục reference; exact retry count;
+Player prefab/input journey; cấu hình platform/quality/aspect/device khác.
 
-## Bằng chứng thực thi
+Bảy nhóm Not Applicable hiện tại: UI/menu/HUD/navigation; win/lose/wave progression;
+weapon/projectile/combat journey; save/load/progress; XP/level/shop/currency/pickup;
+gameplay audio/animation; navigation đến template scene. Không được tính PASS.
 
-Lần đầu Unity crash trong sandbox; không dùng crash đó để kết luận gameplay lỗi.
-Đã thử lại Unity đúng phiên bản ngoài sandbox trên clone để lấy compile log thật.
-WaveSettings/PlayerHealth CS0246 đã được xử lý bằng source gốc. Lượt build
-`editor-defines-fix` đã PASS. Bản cuối có PlayerController và Contact hooks được
-xác minh riêng; xem `VERIFICATION.md` và artifact mới nhất ở đó.
+UI click và keyboard injection có implementation trong bridge nhưng không tự chứng
+minh UI/input feature của game được bao phủ. Chưa có UI thật để kiểm chứng UI journey.
 
-Các mục cần runtime còn **Unknown / Not verified** khi chưa có server/license:
-hook/AltDriver handshake, player graphics/physics/input, screenshot của game, mọi journey và
-assertion runtime. Không có cơ sở tuyên bố 100% feature coverage.
+## Cơ chế kiểm thử hiện tại
+
+Framework hiện độc lập: Python/pytest ↔ authenticated loopback TCP ↔ main-thread
+Unity E2EBridge trong development build. Không có Desktop/Server/license bên ngoài.
+Actual snapshots, log và PNG được lấy từ đúng process/nonce/fingerprint. Source
+project không bị instrument tại chỗ. Skill CLI đã được một agent độc lập dùng để
+audit; validator hợp lệ và audit exit0 không được tính vào runtime PASS.
+
+Kết quả thực thi và giới hạn mới nhất: VERIFICATION.md. Historical reports trước
+migration được giữ trong .e2e/reports và bản ZIP backup; không dùng trạng thái
+Blocked/license lịch sử để mô tả runner mới.

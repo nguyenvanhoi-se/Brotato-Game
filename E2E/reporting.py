@@ -25,7 +25,7 @@ def report(out, records, environment, exit_code):
     counts = Counter(r["status"] for r in rows)
     summary = {s: counts[s] for s in ("PASS", "FAIL", "SKIP", "BLOCKED", "NOT TESTED")}
     execution = dict(build_status=environment.get("build_status", "Unknown / Not verified"),
-                     alt_tester="Connected" if any(r.get("alt_connected") for r in records) else "Disconnected",
+                     driver="Connected" if any(r.get("driver_connected") for r in records) else "Disconnected",
                      runtime_cases_executed=sum(bool(r.get("call_executed")) for r in records),
                      natural_executed=sum(bool(r.get("call_executed")) and r["kind"] == "natural" for r in rows),
                      simulated_executed=sum(bool(r.get("call_executed")) and r["kind"] == "simulated" for r in rows))
@@ -34,7 +34,7 @@ def report(out, records, environment, exit_code):
                    coverage_gaps=[dict(feature=f, flow=flow, reason=why, coverage="Not Tested") for f, flow, why in COVERAGE_GAPS],
                    not_applicable=[dict(feature=f, coverage="Not Applicable", reason=why) for f, why in NOT_APPLICABLE])
     (out / "results.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    suite = ET.Element("testsuite", name="Brotato AltTester E2E", tests=str(len(rows)),
+    suite = ET.Element("testsuite", name="Brotato Independent Unity E2E", tests=str(len(rows)),
                        failures=str(counts["FAIL"]), skipped=str(counts["SKIP"] + counts["BLOCKED"] + counts["NOT TESTED"]))
     suite_properties = ET.SubElement(suite, "properties")
     for key, value in execution.items():

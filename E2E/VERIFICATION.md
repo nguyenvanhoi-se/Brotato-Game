@@ -1,112 +1,114 @@
-# Xác minh E2E — 20/10/2026, nhánh 20_10
+# Xác minh E2E độc lập — 27/10/2026
 
-**Unity test build: PASS. AltTester: Disconnected.
-Số E2E case thực sự vào call phase: 0/32.**
+**Unity Windows Development Build: PASS. Driver độc lập: Connected.
+Đã thực thi 32/32 case trên game thật. Pipeline exit code 1.**
 
-| PASS | FAIL | SKIP thông thường | BLOCKED |
-|---:|---:|---:|---:|
-| 0 | 0 | 0 | 32 |
+| PASS | FAIL | SKIP | BLOCKED | Case Not Tested |
+|---:|---:|---:|---:|---:|
+| 30 | 2 | 0 | 0 | 0 |
 
-Pipeline exit code **2**. Pytest thu thập đủ 32 items nhưng
-preflight chặn trước launch/connection/test assertions. JUnit/Pytest nguyên bản
-ghi 32 skipped vì không có Blocked native; HTML/JSON và XML status properties
-giữ đúng **32 BLOCKED**. Không có game E2E PASS hoặc gameplay FAIL được thực thi.
+Có **3 natural + 29 simulated**.
+Simulated dùng component/physics thật sau hook tạo fixture; không được tính như
+hành trình người chơi tự nhiên. Không tuyên bố E2E toàn dự án thành công hoặc 100% coverage.
 
-## Những việc đã hoàn thành
+## Framework và gỡ công cụ cũ
 
-- Khôi phục nguyên WaveSettings từ upstream commit
-  `1c8bc664c1433b9ce8f47fb4c1ca6c045ac042df`; giữ schema, defaults và constructor.
-- Khôi phục PlayerHealth và PlayerController gốc cùng .meta từ
-  `D:/LT game/CKGame/game_brotato`. Hash khớp nguyên file backup; GUID Controller
-  khớp Player prefab hiện có. Không có duplicate class hoặc duplicate Assets GUID.
-- Không tạo implementation giả, không đổi Scene/Prefab, tuning, package hoặc
-  Unity version. Player vẫn chưa được instance vào SampleScene.
-- Sửa pipeline Editor defines bằng hai lượt configure/build; SetWave hook dùng
-  constructor thật. Hoàn thiện hai ID Contact đã có SIM-027/028, không thêm ID.
-- Unity **6000.3.22f1** thực sự compile/build Windows Development thành công trên
-  clone có source/hook fingerprint khớp. Configure exit0 và build exit0.
-- 5/5 infrastructure tests đạt; đây không phải game E2E PASS. Xem infrastructure.log.
+- Skill `.agents/skills/unity-e2e-testing/SKILL.md`, CLI wrapper, hướng dẫn authoring/protocol;
+  AGENTS.md và project skill đã route sang framework độc lập.
+- Python/pytest dùng TCP loopback có token/session/PID/fingerprint, driver trong
+  Windows Development build; không cần AltTester SDK/Desktop/Server/license.
+- Build chỉ instrument clone `.e2e/projects/`, giữ nguyên source checkout. Mỗi case
+  launch process mới, xác minh connection, quan sát state/assertion, lấy log/PNG,
+  chụp failure và teardown process do runner sở hữu. Không hardcode PASS/xfail.
+- Hỗ trợ JSON flow với launch, query/wait/assert, UI click, keyboard, scene,
+  screenshot, error check và close. `flows/startup.json` đã chạy thật.
+- Đã backup source/spec/logic, coverage và historical reports trước khi gỡ.
+  Desktop2.4.0 uninstaller exit0; SDK, Server/Desktop, dedicated Python dependencies,
+  config/shortcut/uninstall entries, generated clones/builds cũ đã gỡ theo whitelist.
+  Xem [LEGACY_BACKUP.md](LEGACY_BACKUP.md), backup `manifest.json`, `cleanup.json`,
+  `post-cleanup.json`. Historical report/ZIP và lịch sử Git được giữ làm bằng chứng.
 
-Provenance, hash và quyết định phạm vi: `RESTORED_SOURCES.md`.
+## Bằng chứng build và thực thi
 
-## Bằng chứng build và lần thử lại
+Unity **6000.3.22f1**, Python3.12.14, pytest8.3.5. Nhánh **20_10**,
+source revision `d89d3c536a8e0dba4a83b170bcee500c6db7a5ac`; thay đổi hiện tại chưa commit/push.
 
-- Build cuối: `.e2e/reports/20_10-build-retry/build/BrotatoE2E.exe` và manifest
-  `.exe.e2e.json`. Log có `E2E build succeeded. Manifest:` và Unity exit0.
-- Source fingerprint: `c3dbb35e892b076f7b23a4b3e738908ed6fb87653dd70bd9999f943e55811353`.
-- Test/build fingerprint: `e077440f8b5778412a732b352ebe9eb2259187a9542b157163907eb2ed402f5d`.
-- Lần đầu trên20_10 thất bại ở công cụ Unity ApiUpdater.MovedFromExtractor cho
-  Unity.2D.Common.Runtime, không có diagnostic CSxxxx. Log được giữ nguyên tại
-  `.e2e/reports/20_10-regression/unity-configure.log`.
-- Thử lại đúng clone sau khi kiểm tra source/hook hash; không sửa gameplay để
-  che lỗi. Lần thử lại đã configure/build thành công. Không retry test để che FAIL.
-- Chỉ xác nhận test build instrumented Windows; production release và nền tảng
-  khác chưa được build/xác minh trong nhiệm vụ này.
-
-## Blocker AltTester được xác nhận
-
-- SDK và Python driver **2.3.2**; Desktop và Server binary **2.4.0** đã cài thật.
-- Desktop đã được mở và thao tác Start Server. UI báo **License key is required**;
-  chưa có license hợp lệ để khởi động server. Không giả lập handshake hoặc server.
-- Kiểm tra kết nối `127.0.0.1:13000` timeout; chưa có driver kết nối đúng PID/session.
-  Tương thích runtime giữa Server2.4.0 và SDK2.3.2 còn Unknown / Not verified.
-- Cần người dùng nhập license trực tiếp trong Desktop rồi Start Server, hoặc cung
-  cấp host/port của server có license. Không gửi key vào chat hoặc commit vào repo.
-- `desktop-license-required.png` là ảnh lỗi của **Desktop**, không phải screenshot game.
-  Chưa có screenshot hoặc runtime observation của game để báo cáo.
-
-## Báo cáo và cách chạy tiếp
-
-Output cuối: `.e2e/reports/20_10-final/`:
-
-- report.html: specification, actual, Feature→Flow→Case→Result→Coverage.
-- results.json và junit.xml: summary và trạng thái Blocked tách biệt.
-- pytest.xml, pytest.log, events.jsonl, context.json: bằng chứng pytest nguyên bản.
-- unity-configure.log, unity-build.log và build-command.json: bằng chứng build thật.
-- verification-evidence.json: đối chiếu build thành công với manifest/fingerprint;
-  bổ sung metadata build PASS khi suite dùng lại executable đã build.
-- desktop-license-required.png: bằng chứng server thiếu license.
-- inventory.json: source/API/asset/reference hashes; source-integrity.json ở
-  `.e2e/safety/` xác nhận exact source, class count và GUID không trùng.
-
-Sau khi server sẵn sàng, chạy từ root bằng Python đã cài dependency:
+Build và smoke (4 selected cases PASS, 28 Not Tested), exit0:
 
 ```powershell
-python E2E/run.py --build .e2e/reports/20_10-build-retry/build/BrotatoE2E.exe
+python E2E/run.py --build-game --build-timeout 900 --case E2E-001 --case SIM-001 --case SIM-014 --case SIM-027 --out .e2e/reports/independent-20261027-smoke
 ```
 
-Nếu sửa Assets/Packages/ProjectSettings hoặc Unity hook/build recipe, phải dùng
-`--build-game` để có fingerprint mới. Không xóa FAIL hoặc thay expectations để pass.
+Full regression dùng đúng build khớp manifest, exit1:
 
-## Git và file thay đổi
+```powershell
+python E2E/run.py --build .e2e/reports/independent-20261027-smoke/build/BrotatoE2E.exe --out .e2e/reports/independent-20261027-regression
+```
 
-- Branch hiện tại: **20_10**, tạo trực tiếp từ **main local**
-  `e5f0fc595701402d9277c33faf1dfba35f0d87dc`. Không âm thầm cập nhật main từ remote.
-- Snapshot `.e2e/safety/20261020T095238735606Z/` và recovery stash
-  `afdce17537d5a0026e5ed5d401bc7ccdcc46c4ac` vẫn được giữ. 130 file đã được kiểm tra
-  bảo toàn từng byte ngay sau chuyển nhánh. Không reset, force push, commit/push.
-- Các file hướng dẫn/ảnh/solution vốn có trên codex/13_10 được giữ trong working
-  tree mới; một số hiện untracked vì main local chưa từng chứa chúng.
-- Source thêm: Assets/Scripts/Wave/WaveSettings.cs (+.meta và folder.meta),
-  Assets/Scripts/Player/PlayerHealth.cs và PlayerController.cs (+.meta).
-- Harness sửa: E2E/Unity/Editor/E2EConfigure.cs, E2EBuild.cs;
-  E2E/Unity/Runtime/E2EHarness.cs; E2E/tests/test_project_flows.py, conftest.py;
-  E2E/run.py, game.py, catalog.py, reporting.py; AGENTS.md và .gitignore.
-- Tài liệu: README.md, PROJECT_AUDIT.md, VERIFICATION.md, RESTORED_SOURCES.md dưới E2E.
-  Các module/bootstrap/audit/identity/processes/selftests đã tạo từ lượt trước được giữ.
+Source fingerprint `c3dbb35e892b076f7b23a4b3e738908ed6fb87653dd70bd9999f943e55811353`.
+Unity hook/build recipe fingerprint `b6ae58c7321545b696440d2ee9b9e09d596cf0080c07d76a4a28d83582377f53`.
+Configure/build thực sự exit0; manifest được ghi sau BuildPipeline Succeeded.
+Pytest thực sự kết thúc **2 failed, 30 passed in215.78s**, không có case bị skip/block.
 
-## Coverage còn thiếu
+- [HTML report](../.e2e/reports/independent-20261027-regression/report.html)
+- [Kết quả JSON](../.e2e/reports/independent-20261027-regression/results.json)
+- [JUnit XML](../.e2e/reports/independent-20261027-regression/junit.xml),
+  [pytest XML](../.e2e/reports/independent-20261027-regression/pytest.xml),
+  [pytest log](../.e2e/reports/independent-20261027-regression/pytest.log)
+- [Unity build log](../.e2e/reports/independent-20261027-smoke/unity-build.log),
+  configure log/build commands và executable+manifest cùng folder smoke.
+- Per-case observations.json/player logs/PNG trong folder từng ID; failure screenshots
+  SIM-025/failure-call.png và SIM-026/failure-call.png vẫn được giữ.
+- [Coverage matrix](COVERAGE_MATRIX.md): Feature → Flow → Case → Result → Coverage,
+  bao gồm cả gaps và Not Applicable; HTML giữ toàn bộ test specification/actual.
 
-- Tất cả32 case runtime vẫn Blocked; không có bằng chứng player journey thành công.
-- Có 6 nhóm gap Not Tested và 7 nhóm
-  Not Applicable trong report. Player/input source đã phục hồi nhưng không có player
-  trong scene build để thực thi natural flow.
-- SampleScene chỉ camera/light, chưa có loop chiến đấu, state manager, thắng/thua,
-  menu/HUD, save/load, shop/reward hoặc scene navigation. Không tạo mới chúng chỉ
-  để biến test thành PASS.
-- Enemy prefab thiếu Health/ContactDamage; cap/cleanup cần kiểm chứng bằng SIM-025/026.
-  Đây chưa phải gameplay failure đã tái hiện.
-- Physics, rendering, input, error handling, teardown khi driver đang kết nối và
-  screenshot của game: **Unknown / Not verified** tới khi server hoạt động.
+## Hai FAIL được giữ nguyên
 
-Không tuyên bố E2E thành công hoặc100% coverage.
+**SIM-025 — cap với saved Enemy prefab:** expected tối đa2 enemy; assertion đã
+quan sát5 enemy, AliveCount0. Teardown tiếp tục quan sát spawnedCount7, không runtime
+error. Enemy prefab không có EnemyHealth; `EnemySpawner.AliveCount` chỉ đếm
+`GetComponentsInChildren<EnemyHealth>()` (EnemySpawner.cs:14–24), nên spawn vượt cap.
+
+**SIM-026 — ClearEnemies với saved Enemy prefab:** sau pause/clear vẫn còn2 enemy
+đến hết wait timeout; AliveCount0, sourceEnemyHasHealth=false, errorCount0.
+`EnemySpawner.ClearEnemies()` (EnemySpawner.cs:71–75) chỉ destroy EnemyHealth children
+nên không xóa những enemy này.
+
+Đây là hành vi source/prefab được xác minh trên fixture **simulated** của game thật,
+không phải lỗi kết nối. Source/Prefab chưa được sửa để làm PASS; scene production
+hiện chưa instance spawner nên chưa có bằng chứng ảnh hưởng một vòng chơi tự nhiên.
+
+## Kiểm chứng framework và bảo toàn source
+
+- **5/5 infrastructure selftests PASS**, log `infrastructure.log` trong folder regression.
+  Đây là checks harness/report, không cộng vào game E2E PASS.
+- **9 protocol checks** thực hiện với player thật: từ chối token/command/key/scene/UI
+  target sai, chặn screenshot ngoài artifact root và reuse file cũ; connection phục hồi
+  sau auth reject, valid Input System key command không runtime error.
+  Bằng chứng `.e2e/reports/independent-20261027-protocol/checks.json` và player log/PNG.
+  Không có Player trong scene nên không suy ra movement WASD từ check keyboard.
+- Official skill validator PASS; skill wrapper đã được một agent độc lập chạy audit-only
+  exit0. Audit không được tính game runtime PASS.
+- Đối chiếu **83/83 file Assets/Packages/ProjectSettings** với hash đầu nhiệm vụ:
+  không thay đổi/thêm/xóa file. WaveSettings, PlayerHealth, PlayerController và .meta
+  đã khôi phục được bảo toàn. `integrity.json` ghi kết quả; ZIP backup đã kiểm CRC.
+
+## Giới hạn và phần chưa bao phủ
+
+SampleScene chỉ camera/light; ba natural flows hiện có là startup, idle, relaunch.
+Không có Player/Enemy/Spawner/UI/manager trong enabled scene, không có play/combat/
+win/lose/save/navigation loop reachable để chạy. Không xây gameplay giả thay thế.
+
+Sáu nhóm **Not Tested**: tag fallback/retarget/coincident target; lethal damage cùng
+frame/int limits; spawn bù/reference recovery; chính xác retry count/timing; Player
+prefab/WASD journey; platform/quality/aspect/device khác.
+
+Bảy nhóm **Not Applicable** theo source hiện tại: UI/menu/HUD; win/lose/wave
+progression; weapon/projectile/combat journey; save/load/progress; XP/shop/currency;
+audio/animation gameplay; navigation đến template scene. Chi tiết ở matrix/audit.
+
+UI click đã có implementation nhưng chưa có UI thật để kiểm chứng positive UI journey.
+Chỉ xác minh Windows960x540/current quality, không production release hoặc nền tảng khác.
+Không còn blocker thương mại của pipeline; hai regression FAIL và wiring/coverage gaps
+vẫn tồn tại. Muốn có hành trình chơi đến kết thúc cần gameplay thực tế được tích hợp
+và test tương ứng trong nhiệm vụ sau.

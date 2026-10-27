@@ -14,7 +14,7 @@ class CLITests(unittest.TestCase):
         with temporary_workspace() as folder:
             out = Path(folder) / "run"
             result = subprocess.run([sys.executable, str(ROOT / "E2E/run.py"), "--case", "E2E-001",
-                                     "--port", "1", "--out", str(out)], cwd=ROOT,
+                                     "--out", str(out)], cwd=ROOT,
                                     stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=45)
             self.assertEqual(result.returncode, 2, result.stdout)
             data = json.loads((out / "results.json").read_text(encoding="utf-8"))

@@ -2,7 +2,7 @@
 
 def case(cid, feature, goal, steps, expected, *, kind="simulated", blocker=None):
     return dict(id=cid, feature=feature, goal=goal, kind=kind,
-                preconditions=("Build Windows instrumented đúng source; AltTester Server 2.3.x; "
+                preconditions=("Build Windows đúng source có Unity E2E bridge; "
                                "tiến trình mới cho từng case; " +
                                ("không tạo gameplay bằng hook." if kind == "natural" else
                                 "scenario dựng qua E2EHarness; không phải flow người chơi.")),
@@ -10,9 +10,9 @@ def case(cid, feature, goal, steps, expected, *, kind="simulated", blocker=None)
 
 
 CASES = [
-    case("E2E-001", "Khởi động", "Khởi động scene build thực tế", ["Launch exe", "Kết nối AltTester", "Đọc scene, camera/light", "Chụp screenshot", "Đóng game"], "SampleScene, camera orthographic size 5, Global Light 2D, PNG có dữ liệu; không runtime error.", kind="natural"),
+    case("E2E-001", "Khởi động", "Khởi động scene build thực tế", ["Launch exe", "Xác minh PID/session qua bridge", "Đọc scene, camera/light", "Chụp screenshot", "Đóng game"], "SampleScene, camera orthographic size 5, Global Light 2D, PNG có dữ liệu; không runtime error.", kind="natural"),
     case("E2E-002", "Khởi động", "Scene ổn định khi idle", ["Launch", "Quan sát 2 giây", "Đọc lại camera/light và log", "Đóng"], "Scene/camera/light vẫn hoạt động; không runtime error.", kind="natural"),
-    case("E2E-003", "Khởi động", "Khôi phục scene bằng driver", ["Launch", "AltDriver.load_scene SampleScene", "Đợi hook/camera/light", "Đóng"], "Load lại đúng scene, một camera chính hoạt động, không runtime error.", kind="simulated"),
+    case("E2E-003", "Khởi động", "Khôi phục scene bằng driver", ["Launch", "UnityDriver.load_scene SampleScene", "Đợi hook/camera/light", "Đóng"], "Load lại đúng scene, một camera chính hoạt động, không runtime error.", kind="simulated"),
     case("E2E-004", "Khởi động", "Khởi chạy lại tiến trình độc lập", ["Launch", "Chụp trạng thái", "Stop", "Launch lại", "Kiểm tra scene ban đầu", "Stop"], "Hai lần khởi động có SampleScene và camera/light; không runtime error.", kind="natural"),
     case("SIM-001", "Enemy pursuit", "Enemy prefab tiến gần target", ["Tạo Enemy prefab + target qua hook", "Quan sát FixedUpdate 0.5s"], "Khoảng cách đến target giảm, y gần 0; không runtime error."),
     case("SIM-002", "Enemy pursuit", "Target null", ["Tạo Enemy", "Gỡ target", "Quan sát 0.3s"], "Enemy không tiếp tục di chuyển."),

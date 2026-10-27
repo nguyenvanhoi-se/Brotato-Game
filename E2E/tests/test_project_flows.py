@@ -1,8 +1,10 @@
 import math
 import time
+from pathlib import Path
 
 import pytest
-from alttester import By
+from driver import By
+from flows import FlowRunner
 
 
 def scene_objects(game):
@@ -20,6 +22,9 @@ def distance(state):
 
 def test_project_flow(spec, game):
     cid = spec["id"]
+    if cid == "E2E-001":
+        FlowRunner(game, spec).run(Path(__file__).resolve().parents[1] / "flows/startup.json")
+        return
     if cid.startswith("E2E-"):
         scene_objects(game)
         if cid == "E2E-002":

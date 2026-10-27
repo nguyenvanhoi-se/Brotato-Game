@@ -41,10 +41,19 @@ def game(request, spec):
     except ConnectionUnavailable as exc:
         if instance.process is not None and instance.process.poll() is not None:
             pytest.fail(f"Player crashed before connection: {exc}")
-        pytest.skip(f"BLOCKED: AltTester connection/startup unavailable: {exc}")
+        pytest.skip(f"BLOCKED: Unity bridge connection/startup unavailable: {exc}")
     instance.healthy()
     yield instance
-    instance.healthy()
+    if instance.closed_intentionally:
+        return
+    try:
+        instance.healthy()
+    except Exception:
+        try:
+            instance.screenshot("failure-teardown.png")
+        except Exception as exc:
+            (folder / "screenshot-error.txt").write_text(str(exc), encoding="utf-8")
+        raise
 
 
 @pytest.hookimpl(hookwrapper=True)
@@ -81,7 +90,7 @@ def pytest_runtest_makereport(item, call):
     artifacts = [p.relative_to(context.parent).as_posix() for p in sorted(folder.glob("*"))] if folder else []
     record = dict(id=spec["id"], status=status, actual=actual, artifacts=artifacts,
                   call_executed=any(r.when == "call" for r in reports),
-                  alt_connected=bool(instance and instance.connection_verified),
+                  driver_connected=bool(instance and instance.connection_verified),
                   duration=sum(r.duration for r in reports))
     with (context.parent / "events.jsonl").open("a", encoding="utf-8") as stream:
         stream.write(json.dumps(record, ensure_ascii=False) + "\n")

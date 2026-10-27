@@ -1,0 +1,4 @@
+interface:
+  display_name: "Unity E2E Testing"
+  short_description: "Build and drive real Unity games without a license"
+  default_prompt: "Use $unity-e2e-testing to inspect this Unity project and run its real-build regression suite."

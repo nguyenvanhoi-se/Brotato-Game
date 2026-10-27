@@ -1,5 +1,9 @@
 # Unity project setup snapshot
 
+Current update 2026-10-27: the following September snapshot is historical. PlayerController, PlayerHealth and WaveSettings source/meta are now restored; the build scene still has only camera/light. An independent real-player E2E framework now runs without an external SDK/server. See [current project audit](../../../E2E/PROJECT_AUDIT.md) and [runtime evidence](../../../E2E/VERIFICATION.md). Do not treat the absence claims below as the current checkout.
+
+## Historical snapshot
+
 Values were read from this checkout on 2026-09-29. Re-check files/Inspector for each setup task. Static YAML does not prove what a live Editor session currently loads.
 
 ## Unity and packages
