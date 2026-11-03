@@ -1,0 +1,1417 @@
+fileFormatVersion: 2
+guid: d36d2aac71695b44b91ef55b0ccab538
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -307369032527685644
+    second: Yeti_Snowball_0
+  - first:
+      213: -6574383958137773498
+    second: Yeti_Snowball_1
+  - first:
+      213: -1285015749909550769
+    second: Yeti_Snowball_2
+  - first:
+      213: 3707982197591644514
+    second: Yeti_Snowball_3
+  - first:
+      213: -1096168704745462569
+    second: Yeti_Snowball_4
+  - first:
+      213: -2045247784384267286
+    second: Yeti_Snowball_5
+  - first:
+      213: -8001526669623157661
+    second: Yeti_Snowball_6
+  - first:
+      213: -2050702646997855540
+    second: Yeti_Snowball_7
+  - first:
+      213: 700090145289510417
+    second: Yeti_Snowball_8
+  - first:
+      213: -322252331049729368
+    second: Yeti_Snowball_9
+  - first:
+      213: 5979978439671125634
+    second: Yeti_Snowball_10
+  - first:
+      213: 842127064435915027
+    second: Yeti_Snowball_11
+  - first:
+      213: -1187153186678509803
+    second: Yeti_Snowball_12
+  - first:
+      213: -7252611484413729306
+    second: Yeti_Snowball_13
+  - first:
+      213: 7693456610478600830
+    second: Yeti_Snowball_14
+  - first:
+      213: -4228985750125314992
+    second: Yeti_Snowball_15
+  - first:
+      213: -5345463371644125100
+    second: Yeti_Snowball_16
+  - first:
+      213: 399438857433280182
+    second: Yeti_Snowball_17
+  - first:
+      213: -7414335099316061740
+    second: Yeti_Snowball_18
+  - first:
+      213: -5878421398364103763
+    second: Yeti_Snowball_19
+  - first:
+      213: -2751372473713664975
+    second: Yeti_Snowball_20
+  - first:
+      213: 4401916885212401623
+    second: Yeti_Snowball_21
+  - first:
+      213: -4366152558284746621
+    second: Yeti_Snowball_22
+  - first:
+      213: -5495104595438342918
+    second: Yeti_Snowball_23
+  - first:
+      213: 7420203978864411790
+    second: Yeti_Snowball_24
+  - first:
+      213: -8540806945401284513
+    second: Yeti_Snowball_25
+  - first:
+      213: 4280448154630218291
+    second: Yeti_Snowball_26
+  - first:
+      213: 3128360009614360007
+    second: Yeti_Snowball_27
+  - first:
+      213: 698014269876898127
+    second: Yeti_Snowball_28
+  - first:
+      213: 7678175513208355537
+    second: Yeti_Snowball_29
+  - first:
+      213: -5957976244828698266
+    second: Yeti_Snowball_30
+  - first:
+      213: 6756729666110845743
+    second: Yeti_Snowball_31
+  - first:
+      213: -2807079290521460813
+    second: Yeti_Snowball_32
+  - first:
+      213: -4032703248112911282
+    second: Yeti_Snowball_33
+  - first:
+      213: 6946371921234797149
+    second: Yeti_Snowball_34
+  - first:
+      213: 6681900653133168290
+    second: Yeti_Snowball_35
+  - first:
+      213: 7966988125226167632
+    second: Yeti_Snowball_36
+  - first:
+      213: 6588515919758982199
+    second: Yeti_Snowball_37
+  - first:
+      213: -1294527241573035677
+    second: Yeti_Snowball_38
+  - first:
+      213: -689723967029312115
+    second: Yeti_Snowball_39
+  - first:
+      213: 2993415895478294710
+    second: Yeti_Snowball_40
+  - first:
+      213: -5186556521829883868
+    second: Yeti_Snowball_41
+  - first:
+      213: -3183641621626740850
+    second: Yeti_Snowball_42
+  - first:
+      213: 8808914096635802663
+    second: Yeti_Snowball_43
+  - first:
+      213: 8150941955268261969
+    second: Yeti_Snowball_44
+  - first:
+      213: -5675658242768058814
+    second: Yeti_Snowball_45
+  - first:
+      213: -7513623161450858986
+    second: Yeti_Snowball_46
+  - first:
+      213: 763538075395819722
+    second: Yeti_Snowball_47
+  - first:
+      213: -184560289237061511
+    second: Yeti_Snowball_48
+  - first:
+      213: 1152749192893798122
+    second: Yeti_Snowball_49
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 10
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 700
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Yeti_Snowball_0
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 1156
+        width: 144
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f75b315e710cbbf0800000000000000
+      internalID: -307369032527685644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_1
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 1221
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 642eb266f9813c4a0800000000000000
+      internalID: -6574383958137773498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_2
+      rect:
+        serializedVersion: 2
+        x: 796
+        y: 1164
+        width: 27
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f49ebd7dbf4ba2ee0800000000000000
+      internalID: -1285015749909550769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1139
+        height: 1168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2691ce8b926657330800000000000000
+      internalID: 3707982197591644514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_4
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 1140
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d42fbbee50a9c0f0800000000000000
+      internalID: -1096168704745462569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_5
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 1122
+        width: 128
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aebfe1ee9f1dd93e0800000000000000
+      internalID: -2045247784384267286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_6
+      rect:
+        serializedVersion: 2
+        x: 746
+        y: 1100
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36c1c4c43edd4f090800000000000000
+      internalID: -8001526669623157661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_7
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1076
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc25db1cec07a83e0800000000000000
+      internalID: -2050702646997855540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_8
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 921
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11e9bb4274837b900800000000000000
+      internalID: 700090145289510417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_9
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 938
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a24db75631278bf0800000000000000
+      internalID: -322252331049729368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 817
+        width: 96
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 286971525b62df250800000000000000
+      internalID: 5979978439671125634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_11
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 819
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 319f1737a16dfab00800000000000000
+      internalID: 842127064435915027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_12
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 833
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51fed0e6772668fe0800000000000000
+      internalID: -1187153186678509803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_13
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 757
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e5e999e74c895b90800000000000000
+      internalID: -7252611484413729306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_14
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 626
+        width: 54
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e72357a8606a4ca60800000000000000
+      internalID: 7693456610478600830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 503
+        width: 71
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05c779bcddf9f45c0800000000000000
+      internalID: -4228985750125314992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_16
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 535
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4504a4d826911d5b0800000000000000
+      internalID: -5345463371644125100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_17
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 514
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6be6cc646871b8500800000000000000
+      internalID: 399438857433280182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_18
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 497
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d93e8f828dfa1990800000000000000
+      internalID: -7414335099316061740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_19
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 441
+        width: 15
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dabd37622e6ab6ea0800000000000000
+      internalID: -5878421398364103763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 450
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13c5283005921d9d0800000000000000
+      internalID: -2751372473713664975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_21
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 449
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7df01e1b510c61d30800000000000000
+      internalID: 4401916885212401623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_22
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 432
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3805640916f4863c0800000000000000
+      internalID: -4366152558284746621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_23
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 417
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afce7491c777db3b0800000000000000
+      internalID: -5495104595438342918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_24
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 343
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e844721743cd9f660800000000000000
+      internalID: 7420203978864411790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_25
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 262
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f58da249555f87980800000000000000
+      internalID: -8540806945401284513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_26
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 204
+        width: 106
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 332e538fae4376b30800000000000000
+      internalID: 4280448154630218291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_27
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 278
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cdf99e9ada2a6b20800000000000000
+      internalID: 3128360009614360007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_28
+      rect:
+        serializedVersion: 2
+        x: 1167
+        y: 274
+        width: 22
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f498a2cb748dfa900800000000000000
+      internalID: 698014269876898127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_29
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 172
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1daf2e3d2fb5e8a60800000000000000
+      internalID: 7678175513208355537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_30
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 170
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66905ca0c24015da0800000000000000
+      internalID: -5957976244828698266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_31
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 160
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2371e725d9b4cd50800000000000000
+      internalID: 6756729666110845743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_32
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 130
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bfdc1002404b09d0800000000000000
+      internalID: -2807079290521460813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_33
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 136
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4c7aa313c5f808c0800000000000000
+      internalID: -4032703248112911282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_34
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 94
+        width: 41
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d52a2fa7578766060800000000000000
+      internalID: 6946371921234797149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_35
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 130
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2aef376ed31eabc50800000000000000
+      internalID: 6681900653133168290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_36
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 124
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05d6cdd2d7d609e60800000000000000
+      internalID: 7966988125226167632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 111
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73c7d32525c1f6b50800000000000000
+      internalID: 6588515919758982199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_38
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 110
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36119fd155ae80ee0800000000000000
+      internalID: -1294527241573035677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_39
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 111
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d850520d4bb9d66f0800000000000000
+      internalID: -689723967029312115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_40
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 117
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b8ddfaa5efba8920800000000000000
+      internalID: 2993415895478294710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_41
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 93
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42028dca256a508b0800000000000000
+      internalID: -5186556521829883868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_42
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 93
+        width: 33
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8f1ac210de61d3d0800000000000000
+      internalID: -3183641621626740850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_43
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 96
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72478e203bc8f3a70800000000000000
+      internalID: 8808914096635802663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_44
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 98
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 158b794d586fd1170800000000000000
+      internalID: 8150941955268261969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_45
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 97
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 246ca4d26e20c31b0800000000000000
+      internalID: -5675658242768058814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_46
+      rect:
+        serializedVersion: 2
+        x: 792
+        y: 69
+        width: 27
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 616f2952b8f3ab790800000000000000
+      internalID: -7513623161450858986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_47
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 78
+        width: 17
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac8047c85d1a89a00800000000000000
+      internalID: 763538075395819722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_48
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 31
+        width: 19
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970b160156f407df0800000000000000
+      internalID: -184560289237061511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Yeti_Snowball_49
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 65
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae69d8d88436fff00800000000000000
+      internalID: 1152749192893798122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Yeti_Snowball_0: -307369032527685644
+      Yeti_Snowball_1: -6574383958137773498
+      Yeti_Snowball_10: 5979978439671125634
+      Yeti_Snowball_11: 842127064435915027
+      Yeti_Snowball_12: -1187153186678509803
+      Yeti_Snowball_13: -7252611484413729306
+      Yeti_Snowball_14: 7693456610478600830
+      Yeti_Snowball_15: -4228985750125314992
+      Yeti_Snowball_16: -5345463371644125100
+      Yeti_Snowball_17: 399438857433280182
+      Yeti_Snowball_18: -7414335099316061740
+      Yeti_Snowball_19: -5878421398364103763
+      Yeti_Snowball_2: -1285015749909550769
+      Yeti_Snowball_20: -2751372473713664975
+      Yeti_Snowball_21: 4401916885212401623
+      Yeti_Snowball_22: -4366152558284746621
+      Yeti_Snowball_23: -5495104595438342918
+      Yeti_Snowball_24: 7420203978864411790
+      Yeti_Snowball_25: -8540806945401284513
+      Yeti_Snowball_26: 4280448154630218291
+      Yeti_Snowball_27: 3128360009614360007
+      Yeti_Snowball_28: 698014269876898127
+      Yeti_Snowball_29: 7678175513208355537
+      Yeti_Snowball_3: 3707982197591644514
+      Yeti_Snowball_30: -5957976244828698266
+      Yeti_Snowball_31: 6756729666110845743
+      Yeti_Snowball_32: -2807079290521460813
+      Yeti_Snowball_33: -4032703248112911282
+      Yeti_Snowball_34: 6946371921234797149
+      Yeti_Snowball_35: 6681900653133168290
+      Yeti_Snowball_36: 7966988125226167632
+      Yeti_Snowball_37: 6588515919758982199
+      Yeti_Snowball_38: -1294527241573035677
+      Yeti_Snowball_39: -689723967029312115
+      Yeti_Snowball_4: -1096168704745462569
+      Yeti_Snowball_40: 2993415895478294710
+      Yeti_Snowball_41: -5186556521829883868
+      Yeti_Snowball_42: -3183641621626740850
+      Yeti_Snowball_43: 8808914096635802663
+      Yeti_Snowball_44: 8150941955268261969
+      Yeti_Snowball_45: -5675658242768058814
+      Yeti_Snowball_46: -7513623161450858986
+      Yeti_Snowball_47: 763538075395819722
+      Yeti_Snowball_48: -184560289237061511
+      Yeti_Snowball_49: 1152749192893798122
+      Yeti_Snowball_5: -2045247784384267286
+      Yeti_Snowball_6: -8001526669623157661
+      Yeti_Snowball_7: -2050702646997855540
+      Yeti_Snowball_8: 700090145289510417
+      Yeti_Snowball_9: -322252331049729368
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
