@@ -1,0 +1,9 @@
+tạo riêng mỗi scence, 
+
+
+Map 1: con cầm cung (bow_enemy) màu nâu, đánh thường màu nâu normal_enemy , elite_boss (1 2 con này thôi) , mấy con đầu cho nhiều. nâu hết
+Map 2: con cầm cung (bow_enemy) màu xanh, đánh thường màu xanh normal_enemy , elite_boss (1 2 con này thôi) xanh, có thêm quỷ xương 
+
+Map 3: con cầm cung (bow_enemy) màu đỏ, đánh thường màu đỏ normal_enemy đỏ, elite_boss (1 2 con này thôi) đỏ, có thêm quỷ lửa
+
+map 4: con cầm cung (bow_enemy) màu trắng, đánh thường màu trắng normal_enemy trắng, elite_boss (1 2 con này thôi) trắng, có thêm yeti
