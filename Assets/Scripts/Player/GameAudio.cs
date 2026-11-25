@@ -211,7 +211,7 @@ public class GameAudio : MonoBehaviour
         }
     }
 }
-using UnityEngine;
+
 
 /// <summary>Phát nhạc nền và hiệu ứng ở các sự kiện chính của lượt chơi.</summary>
 // Dịch vụ nhỏ dùng chung giữa các scene; giữ AudioSource riêng để hiệu ứng không ngắt nhạc.
